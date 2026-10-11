@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ionut Barber Studio — Barbería en Lleida</title>
+<meta name="description" content="Ionut Barber Studio, barbería en Lleida con más de 23 años de experiencia. Cortes clásicos y de tendencia, barba y afeitado a navaja. 5,0 en Booksy con 550 reseñas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #141414;
+    --negro-2: #1e1e1e;
+    --crema: #f4ede3;
+    --madera: #c99a62;
+    --madera-osc: #9c6f3b;
+    --madera-clara: #ead7bd;
+    --verde: #3f5b3a;
+    --blanco: #fffdf9;
+    --gris: #7a746c;
+    --linea: rgba(20,20,20,.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--crema); color: var(--negro); line-height: 1.65; overflow-x: hidden; }
+  h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 600; letter-spacing: -.5px; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  header {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 6%; background: rgba(20,20,20,.94); backdrop-filter: blur(8px);
+  }
+  .marca img { height: 34px; width: auto; }
+  nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
+  nav a { font-size: .74rem; letter-spacing: 2px; text-transform: uppercase; color: #bdb6ac; transition: color .2s; }
+  nav a:hover { color: var(--blanco); }
+  nav .nav-cta { color: var(--negro); background: var(--madera); padding: 9px 18px; font-weight: 700; border-radius: 6px; }
+  nav .nav-cta:hover { color: var(--negro); background: var(--madera-clara); }
+
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 6% 80px; color: var(--blanco); overflow: hidden; isolation: isolate; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url('img/interior-ancho.jpg') center/cover no-repeat; }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(20,20,20,.92) 0%, rgba(20,20,20,.75) 45%, rgba(20,20,20,.2) 100%); }
+  .hero-txt { max-width: 600px; }
+  .hero small { display: inline-flex; align-items: center; gap: 10px; font-size: .74rem; letter-spacing: 3px; text-transform: uppercase; color: var(--madera-clara); margin-bottom: 22px; }
+  .hero small::before { content: ""; width: 28px; height: 2px; background: var(--madera); }
+  .hero h1 { font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.05; margin-bottom: 22px; }
+  .hero h1 span { color: var(--madera); }
+  .hero p { color: #d8d1c6; font-size: 1.06rem; max-width: 480px; margin-bottom: 32px; font-weight: 300; }
+  .botones { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--madera); color: var(--negro); padding: 15px 30px; font-weight: 700; font-size: .78rem; letter-spacing: 2px; text-transform: uppercase; border-radius: 6px; transition: transform .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); background: var(--madera-clara); }
+  .btn-linea { background: transparent; color: var(--blanco); border: 1px solid rgba(255,255,255,.45); }
+  .btn-linea:hover { background: rgba(255,255,255,.08); }
+  .btn-negro { background: var(--negro); color: var(--blanco); }
+  .btn-negro:hover { background: #333; }
+
+  .franja { background: var(--negro); color: var(--blanco); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .franja div { padding: 24px 16px; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
+  .franja div:last-child { border-right: 0; }
+  .franja b { display: block; font-family: 'Unbounded', sans-serif; font-size: 1.6rem; color: var(--madera); line-height: 1.2; }
+  .franja span { font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; color: #a9a299; }
+
+  section { padding: 100px 6%; max-width: 1180px; margin: 0 auto; }
+  .titulillo { display: block; font-size: .72rem; letter-spacing: 4px; text-transform: uppercase; color: var(--madera-osc); margin-bottom: 12px; font-weight: 700; }
+  .centro { text-align: center; }
+  .titulo { text-align: center; font-size: clamp(1.9rem, 4.2vw, 2.9rem); margin-bottom: 54px; line-height: 1.1; }
+
+  .ionut { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
+  .ionut .foto { position: relative; }
+  .ionut .foto img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: top; border-radius: 14px; }
+  .ionut .foto span { position: absolute; right: -22px; bottom: 34px; background: var(--madera); color: var(--negro); border-radius: 12px; padding: 16px 20px; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1; box-shadow: 0 18px 40px rgba(0,0,0,.2); }
+  .ionut .foto span small { display: block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: .7rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; }
+  .ionut h2 { font-size: clamp(1.8rem, 3.8vw, 2.6rem); line-height: 1.12; margin-bottom: 20px; }
+  .ionut p { color: #4f4a44; font-weight: 300; margin-bottom: 16px; }
+  .pilares { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
+  .pilares div { background: var(--blanco); border: 1px solid var(--linea); border-radius: 12px; padding: 16px; }
+  .pilares b { display: block; font-size: .92rem; margin: 6px 0 2px; }
+  .pilares span { font-size: .8rem; color: var(--gris); }
+  .pilares i { font-style: normal; font-size: 1.3rem; }
+
+  .fondo-madera { background: var(--madera-clara); }
+  .carta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .bloque { background: var(--blanco); border-radius: 14px; padding: 30px 26px; border: 1px solid var(--linea); }
+  .bloque h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .fila { display: flex; justify-content: space-between; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--linea); }
+  .fila:last-child { border-bottom: 0; }
+  .fila small { display: block; color: var(--gris); font-size: .8rem; margin-top: 2px; }
+  .fila b { font-family: 'Unbounded', sans-serif; font-weight: 600; white-space: nowrap; color: var(--madera-osc); }
+  .bloque.oscuro { background: var(--negro); color: var(--blanco); border-color: var(--negro); }
+  .bloque.oscuro .fila { border-color: rgba(255,255,255,.12); }
+  .bloque.oscuro .fila small { color: #a9a299; }
+  .bloque.oscuro .fila b { color: var(--madera); }
+  .incluye { text-align: center; margin-top: 26px; color: #4f4a44; font-size: .92rem; }
+
+  .estudio { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 12px; grid-auto-flow: dense; }
+  .estudio img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+  .estudio .alto { grid-row: span 2; }
+  .estudio .ancho { grid-column: span 2; }
+
+  .productos { background: var(--negro); color: var(--blanco); }
+  .prod { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center; }
+  .prod h2 { font-size: clamp(1.8rem, 3.8vw, 2.6rem); line-height: 1.12; margin-bottom: 18px; }
+  .prod h2 span { color: var(--madera); }
+  .prod p { color: #cfc8bd; font-weight: 300; margin-bottom: 14px; }
+  .prod ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .prod li { border: 1px solid rgba(255,255,255,.2); padding: 6px 14px; border-radius: 30px; font-size: .8rem; }
+  .prod-fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .prod-fotos img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+  .productos .titulillo { color: var(--madera); }
+
+  .opiniones { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .op { background: var(--blanco); border-radius: 14px; padding: 28px 28px 24px; border: 1px solid var(--linea); }
+  .op .est { color: var(--madera-osc); letter-spacing: 3px; margin-bottom: 10px; }
+  .op p { font-size: 1.06rem; margin-bottom: 14px; }
+  .op cite { font-style: normal; color: var(--gris); font-size: .8rem; letter-spacing: 1px; }
+
+  .info { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+  .horario { width: 100%; border-collapse: collapse; }
+  .horario td { padding: 12px 4px; border-bottom: 1px solid var(--linea); }
+  .horario td:last-child { text-align: right; color: #4f4a44; }
+  .horario tr.cerrado td:last-child { color: #aaa39a; }
+  .dir { margin-top: 20px; color: #4f4a44; }
+  .dir b { color: var(--negro); font-weight: 600; }
+  .lugar { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .lugar img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+  .lugar .mapa { grid-column: span 2; border: 1px solid var(--linea); }
+
+  .cta { position: relative; text-align: center; padding: 110px 6%; color: var(--blanco); overflow: hidden; isolation: isolate; }
+  .cta::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url('img/espejos.jpg') center/cover no-repeat; }
+  .cta::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(20,20,20,.78); }
+  .cta h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); line-height: 1.1; margin-bottom: 16px; }
+  .cta p { color: #d8d1c6; max-width: 460px; margin: 0 auto 30px; font-weight: 300; }
+  .cta .botones { justify-content: center; }
+
+  footer { text-align: center; padding: 26px 6%; background: var(--negro); color: #8a847b; font-size: .8rem; }
+
+  .wa-flotante { position: fixed; right: 22px; bottom: 22px; z-index: 120; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 25px rgba(0,0,0,.3); }
+  .wa-flotante svg { width: 30px; height: 30px; fill: #fff; }
+
+  @media (max-width: 900px) {
+    nav ul li:not(:last-child) { display: none; }
+    .marca img { height: 26px; }
+    .hero::after { background: linear-gradient(180deg, rgba(20,20,20,.65), rgba(20,20,20,.9)); }
+    .franja { grid-template-columns: 1fr 1fr; }
+    .franja div:nth-child(2) { border-right: 0; }
+    .franja div:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.1); }
+    .ionut, .prod, .info, .opiniones, .carta { grid-template-columns: 1fr; }
+    .ionut { gap: 44px; }
+    .ionut .foto span { right: 14px; bottom: 14px; font-size: 1.6rem; }
+    .pilares { grid-template-columns: 1fr; }
+    .estudio { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+    section { padding: 76px 6%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="marca" href="#inicio"><img src="img/logo.jpg" alt="ionut barber"></a>
+  <nav>
+    <ul>
+      <li><a href="#ionut">Ionut</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#estudio">El estudio</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a class="nav-cta" href="https://wa.me/34618480636" target="_blank" rel="noopener">Pedir cita</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="inicio" style="max-width:none;">
+  <div class="hero-txt">
+    <small>Barbería · Lleida</small>
+    <h1>Más de <span>23 años</span> haciendo que salgas como quieres</h1>
+    <p>Cortes clásicos y de tendencia, barba y afeitado a navaja en un estudio tranquilo, con asesoría personalizada y atención al detalle.</p>
+    <div class="botones">
+      <a class="btn" href="https://wa.me/34618480636" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+      <a class="btn btn-linea" href="#servicios">Ver precios</a>
+    </div>
+  </div>
+</section>
+
+<div class="franja">
+  <div><b>5,0 ★</b><span>En Booksy</span></div>
+  <div><b>550</b><span>Reseñas</span></div>
+  <div><b>100 %</b><span>De 5 estrellas</span></div>
+  <div><b>+23</b><span>Años de oficio</span></div>
+</div>
+
+<section id="ionut">
+  <div class="ionut">
+    <div class="foto">
+      <img src="img/ionut.jpg" alt="Ionut, barbero en Lleida">
+      <span>+23<small>años de experiencia</small></span>
+    </div>
+    <div>
+      <span class="titulillo">El barbero</span>
+      <h2>No solo corto el pelo: te ayudo a encontrar tu look</h2>
+      <p>Soy Ionut y llevo más de 23 años en el mundo de la barbería. En mi estudio cada corte es una experiencia personalizada, pensada para resaltar lo mejor de ti y adaptada a tu estilo y a tu tipo de cabello.</p>
+      <p>Moderno o clásico, me tomo el tiempo necesario para que salgas exactamente como querías.</p>
+      <div class="pilares">
+        <div><i>💬</i><b>Asesoría personalizada</b><span>Te aconsejo el corte que mejor te va</span></div>
+        <div><i>🌿</i><b>Ambiente relajado</b><span>Un estudio tranquilo, sin prisas</span></div>
+        <div><i>✂️</i><b>Calidad y detalle</b><span>Cada corte, cuidado al milímetro</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="fondo-madera">
+<section id="servicios">
+  <span class="titulillo centro">Carta de servicios</span>
+  <h2 class="titulo">Servicios y precios</h2>
+  <div class="carta">
+    <div class="bloque">
+      <h3>Cortes</h3>
+      <div class="fila"><div>Corte clásico<small>Lavar y peinar · 30 min</small></div><b>20 €</b></div>
+      <div class="fila"><div>Corte tendencia<small>Lavar y peinar · 40 min</small></div><b>22 €</b></div>
+      <div class="fila"><div>Corte pelo largo<small>Lavar y peinar · 1 h</small></div><b>30 €</b></div>
+      <div class="fila"><div>Degradado laterales<small>20 min</small></div><b>14 €</b></div>
+    </div>
+    <div class="bloque oscuro">
+      <h3>Corte + barba</h3>
+      <div class="fila"><div>Corte tendencia + barba<small>1 h</small></div><b>32 €</b></div>
+      <div class="fila"><div>Corte clásico + barba<small>50 min</small></div><b>30 €</b></div>
+    </div>
+    <div class="bloque">
+      <h3>Barba</h3>
+      <div class="fila"><div>Arreglo de barba<small>20 min</small></div><b>14 €</b></div>
+      <div class="fila"><div>Afeitado con navaja<small>20 min</small></div><b>14 €</b></div>
+    </div>
+  </div>
+  <p class="incluye">Todos los cortes incluyen lavado y peinado.</p>
+</section>
+</div>
+
+<section id="estudio">
+  <span class="titulillo centro">El estudio</span>
+  <h2 class="titulo">Madera, plantas y buena luz</h2>
+  <div class="estudio">
+    <img class="alto" src="img/ionut-cortando.jpg" alt="Ionut cortando el pelo a un cliente">
+    <img class="ancho" src="img/sillon.jpg" alt="Sillón de barbero junto a la pared de madera">
+    <img src="img/cartel.jpg" alt="Cartel de Barber Shop en la fachada">
+    <img src="img/interior.jpg" alt="Interior del estudio con plantas">
+    <img src="img/ventana.jpg" alt="Sillones junto al ventanal">
+    <img class="alto" src="img/ionut-secador.jpg" alt="Ionut peinando con secador">
+    <img class="ancho" src="img/espejos.jpg" alt="Espejos y puestos de trabajo">
+    <img src="img/fachada.jpg" alt="Fachada de ionut barber">
+  </div>
+</section>
+
+<div class="productos">
+<section>
+  <div class="prod">
+    <div>
+      <span class="titulillo">El acabado</span>
+      <h2>Productos <span>IB</span> para que el peinado aguante</h2>
+      <p>Para terminar cada servicio trabajamos con productos de la línea IB: fijación, textura y volumen para que el corte quede igual de bien al salir de casa.</p>
+      <p>Pregúntanos en el estudio cuál le va mejor a tu pelo.</p>
+      <ul><li>Hair Pomade</li><li>Matte Paste</li><li>Sea Salt Spray</li><li>Volume Powder</li></ul>
+    </div>
+    <div class="prod-fotos">
+      <img src="img/pomada.jpg" alt="Pomada IB">
+      <img src="img/matte-paste.jpg" alt="Matte paste IB">
+      <img src="img/sprays.jpg" alt="Sea salt spray IB">
+      <img src="img/polvos.jpg" alt="Polvos de volumen IB">
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="opiniones">
+  <span class="titulillo centro">Opiniones</span>
+  <h2 class="titulo">550 reseñas, todas de 5 estrellas</h2>
+  <div class="opiniones">
+    <div class="op"><div class="est">★★★★★</div><p>“Como siempre, un profesional de 10. Ionut marca diferencias, nunca mejor dicho.”</p><cite>— Mario, cliente verificado en Booksy</cite></div>
+    <div class="op"><div class="est">★★★★★</div><p>“Espectacular! Un profesional de los pies a la cabeza.”</p><cite>— Javi, cliente verificado en Booksy</cite></div>
+    <div class="op"><div class="est">★★★★★</div><p>“Hoy he probado por primera vez con Ionut y me ha encantado! A parte de su gran profesionalidad y cercanía…”</p><cite>— Júlia, clienta verificada en Booksy</cite></div>
+    <div class="op"><div class="est">★★★★★</div><p>“Fantástico corte y trato con Ionut, recomendable al 100 %.”</p><cite>— Edu, cliente verificado en Booksy</cite></div>
+  </div>
+</section>
+
+<div class="fondo-madera">
+<section id="ubicacion">
+  <span class="titulillo centro">Visítanos</span>
+  <h2 class="titulo">Horario y ubicación</h2>
+  <div class="info">
+    <div>
+      <table class="horario">
+        <tr class="cerrado"><td>Lunes</td><td>Cerrado</td></tr>
+        <tr><td>Martes</td><td>09:30 – 13:30 · 15:30 – 19:30</td></tr>
+        <tr><td>Miércoles</td><td>09:30 – 13:30 · 16:30 – 20:30</td></tr>
+        <tr><td>Jueves</td><td>09:30 – 13:30 · 16:30 – 20:30</td></tr>
+        <tr><td>Viernes</td><td>09:30 – 13:30 · 16:30 – 20:30</td></tr>
+        <tr class="cerrado"><td>Sábado</td><td>Cerrado</td></tr>
+        <tr class="cerrado"><td>Domingo</td><td>Cerrado</td></tr>
+      </table>
+      <p class="dir"><b>Av. Alcalde Rovira Roure, 6</b> · 25006 Lleida</p>
+      <p class="dir">Tel / WhatsApp: <b>618 48 06 36</b></p>
+    </div>
+    <div class="lugar">
+      <img src="img/fachada.jpg" alt="Fachada de ionut barber en Lleida">
+      <img src="img/cartel.jpg" alt="Cartel de la barbería">
+      <img class="mapa" src="img/map.png" alt="Mapa de Ionut Barber Studio en Lleida">
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="cta">
+  <h2>¿Te toca corte?</h2>
+  <p>Escríbeme por WhatsApp o reserva en Booksy y elige el hueco que mejor te venga.</p>
+  <div class="botones">
+    <a class="btn" href="https://wa.me/34618480636" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+    <a class="btn btn-linea" href="https://booksy.com/es-es/167217_ionutbarberstudio_barberia_51784_lleida" target="_blank" rel="noopener">Reservar en Booksy</a>
+  </div>
+</div>
+
+<footer>© 2026 Ionut Barber Studio · Av. Alcalde Rovira Roure, 6, Lleida</footer>
+
+<a class="wa-flotante" href="https://wa.me/34618480636" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2zm5.8 14.09c-.24.68-1.43 1.3-1.97 1.35-.5.05-.98.24-3.3-.69-2.79-1.1-4.56-3.95-4.7-4.13-.13-.18-1.12-1.49-1.12-2.85s.71-2.02.97-2.3c.25-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.24.56.8 1.94.87 2.08.07.14.12.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.13-.28.28-.12.55.16.27.71 1.17 1.52 1.89 1.05.93 1.93 1.22 2.2 1.36.27.14.43.12.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.6-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>
+</a>
+
+</body>
+</html>
